@@ -29,6 +29,14 @@ WebElement s = w.findElement(By.name("q"));
         else {
             System.out.print ("failed");
         }
+       a.click();
+        String t = w.getTitle();
+        if (t.equals("java.com: Java и вы")){
+            System.out.print ("ok");
+                    }
+        else {
+            System.out.print ("failed");
+        }
         w.quit();
                 }
 
