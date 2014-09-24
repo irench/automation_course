@@ -17,22 +17,20 @@ import java.util.List;
 public class Pass {
     @Test
     public void All (){
-        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
-        w.get("http://oxogamestudio.com/passwd.current6.htm");
-        WebElement m = w.findElement(By.xpath("//input [@type = 'password']"));
+       WebDriver w = TestHelper.initget("http://oxogamestudio.com/passwd.current4.htm");
+        WebElement m = TestHelper.find(w,"//input [@type = 'password']");
         String m1 = m.getText();
-        WebElement s = w.findElement(By.xpath("//td [text()='Site name']/..//input"));
+        WebElement s = TestHelper.find(w,"//td [text()='Site name']/..//input");
         String s1 = s.getText();
-       WebElement o = w.findElement(By.xpath("//td [text()='Generated password']/..//input"));
-        WebElement v = w.findElement(By.xpath("//input [@type='submit'][@value='Generate']"));
-        WebElement a = w.findElement(By.xpath("//td [text()='Site name']"));
-        WebElement b = w.findElement(By.xpath("//td [text()='Your master password']"));
-        WebElement c =w.findElement(By.xpath("//td [text()='Generated password']"));
+       WebElement o = TestHelper.find(w,"//td [text()='Generated password']/..//input");
+
+        WebElement a = TestHelper.find(w,"//td [text()='Site name']");
+        WebElement b = TestHelper.find(w,"//td [text()='Your master password']");
+        WebElement c =TestHelper.find(w,"//td [text()='Generated password']");
 
         m.sendKeys("123");
         s.sendKeys("facebook.com");
-        v.click();
+        TestHelper.Click(w,"//input [@type='submit'][@value='Generate']");
 
         while (o.getAttribute("value").equals(""));
 
@@ -52,9 +50,7 @@ public class Pass {
     }
 @Test
     public void Clear (){
-        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
-        w.get("http://oxogamestudio.com/passwd.current4.htm");
+    WebDriver w = TestHelper.initget("http://oxogamestudio.com/passwd.current6.htm");
     WebElement m = w.findElement(By.xpath("//input [@name ='master'][@type = 'password']"));
     String m1 = m.getText();
     WebElement s = w.findElement(By.xpath("//input [@name ='site'][@autocorrect = 'off']"));
