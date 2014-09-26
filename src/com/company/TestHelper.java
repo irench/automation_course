@@ -19,7 +19,7 @@ public  static  WebDriver initget (String h){
 }
     public  static void  Click (WebDriver w, String xpth){
 
-        WebElement l = w.findElement(By.xpath(xpth));
+        WebElement l = find(w, xpth);
       l.click();
 
    }

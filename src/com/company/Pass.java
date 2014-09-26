@@ -15,33 +15,24 @@ import java.util.List;
 
 @RunWith(JUnit4.class)
 public class Pass {
+
+    public  static  String UrlSite = "http://oxogamestudio.com/passwd.current4.htm";
+
     @Test
     public void All (){
-       WebDriver w = TestHelper.initget("http://oxogamestudio.com/passwd.current4.htm");
-        WebElement m = TestHelper.find(w,"//input [@type = 'password']");
-        String m1 = m.getText();
-        WebElement s = TestHelper.find(w,"//td [text()='Site name']/..//input");
-        String s1 = s.getText();
-       WebElement o = TestHelper.find(w,"//td [text()='Generated password']/..//input");
+       WebDriver w = TestHelper.initget(UrlSite);
 
-        WebElement a = TestHelper.find(w,"//td [text()='Site name']");
-        WebElement b = TestHelper.find(w,"//td [text()='Your master password']");
-        WebElement c =TestHelper.find(w,"//td [text()='Generated password']");
 
-        m.sendKeys("123");
-        s.sendKeys("facebook.com");
-        TestHelper.Click(w,"//input [@type='submit'][@value='Generate']");
+        PassGen_first.InputData(w,"123");
+        PassGen_first.InputSite(w,"facebook.com");
+       PassGen_first.click(w);
 
-        while (o.getAttribute("value").equals(""));
-
-        String o2 = o.getAttribute("value");
-        String a1 = a.getText();
-        String b1=b.getText();
-        String c1= c.getText();
+        String o2 = PassGen_first.GetPassword(w);
+        String a1 = PassGen_first.SiteN(w);
+        String b1=PassGen_first.MasPas(w);
+        String c1= PassGen_first.GenP(w);
 
         Assert.assertEquals("Hq377QTRpTWZJ@1a",o2);
-        //Assert.assertTrue(s.isEnabled());
-        //Assert.assertTrue(o.isEnabled());
         Assert.assertEquals("Site name",a1);
         Assert.assertEquals("Your master password",b1);
         Assert.assertEquals("Generated password",c1);
