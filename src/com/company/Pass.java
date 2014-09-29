@@ -3,34 +3,30 @@ package com.company;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runner.Runner;
 import org.junit.runners.JUnit4;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import javax.xml.transform.Result;
-import java.util.List;
-
 @RunWith(JUnit4.class)
 public class Pass {
 
-    public  static  String UrlSite = "http://oxogamestudio.com/passwd.current4.htm";
+
 
     @Test
     public void All (){
-       WebDriver w = TestHelper.initget(UrlSite);
+       WebDriver w = PassGen_first.urlSite();
 
 
-        PassGen_first.InputData(w,"123");
-        PassGen_first.InputSite(w,"facebook.com");
+        PassGen_first.InputData_1(w, "123");
+        PassGen_first.InputSite_2(w, "facebook.com");
        PassGen_first.click(w);
 
         String o2 = PassGen_first.GetPassword(w);
         String a1 = PassGen_first.SiteN(w);
         String b1=PassGen_first.MasPas(w);
-        String c1= PassGen_first.GenP(w);
+        String c1= PassGen_first.GenP_3(w);
 
         Assert.assertEquals("Hq377QTRpTWZJ@1a",o2);
         Assert.assertEquals("Site name",a1);
@@ -40,125 +36,108 @@ public class Pass {
 
     }
 @Test
-    public void Clear (){
-    WebDriver w = TestHelper.initget("http://oxogamestudio.com/passwd.current6.htm");
-    WebElement m = w.findElement(By.xpath("//input [@name ='master'][@type = 'password']"));
-    String m1 = m.getText();
-    WebElement s = w.findElement(By.xpath("//input [@name ='site'][@autocorrect = 'off']"));
-    String s1 = s.getText();
-    WebElement o = w.findElement(By.xpath("//input [@name ='password']"));
-    WebElement v = w.findElement(By.xpath("//input [@type='submit'][@value='Generate']"));
-    v.click();
-        while (o.getAttribute("value").equals(""));
+    public void Not_Diseable (){
+    WebDriver w = PassGen_first.urlSite();
+    PassGen_first.InputData_1(w,"123");
+    PassGen_first.InputSite_2(w,"facebook.com");
+    PassGen_first.click(w);
 
-        String o2 = o.getAttribute("value");
-        Assert.assertEquals("BaefBs8/Z/cm2@1a",o2);
-    Assert.assertTrue(s.isEnabled());
-    Assert.assertTrue(o.isEnabled());
+    Boolean f1 = PassGen_first.mast_field_enab1(w);
+    Boolean f2 = PassGen_first.mast_field_enab2(w);
+    Boolean f3 =PassGen_first.mast_field_enab3(w);
+    String pas = PassGen_first.GetPassword(w);
+
+
+    Assert.assertEquals(true,f1);
+    Assert.assertEquals(true,f2);
+    Assert.assertEquals(true,f3);
+    Assert.assertEquals("Hq377QTRpTWZJ@1a",pas);
+
+    w.quit();
 
     }
     @Test
     public void OneFirst(){
-        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
-        w.get("http://oxogamestudio.com/passwd.current4.htm");
-        WebElement m = w.findElement(By.xpath("//input [@name ='master'][@type = 'password']"));
-        String m1 = m.getText();
-        WebElement s = w.findElement(By.xpath("//input [@name ='site'][@autocorrect = 'off']"));
-        String s1 = s.getText();
-        WebElement o = w.findElement(By.xpath("//input [@name ='password']"));
-        WebElement v = w.findElement(By.xpath("//input [@type='submit'][@value='Generate']"));
+        WebDriver w = PassGen_first.urlSite();
+        PassGen_first.InputData_1(w,"irena");
+        PassGen_first.click(w);
 
-        m.sendKeys("irena");
-        v.click();
+        Boolean f1 = PassGen_first.mast_field_enab1(w);
+        Boolean f2 = PassGen_first.mast_field_enab2(w);
+        Boolean f3 =PassGen_first.mast_field_enab3(w);
+        String pas = PassGen_first.GetPassword(w);
 
-        while (o.getAttribute("value").equals(""));
 
-        String o2 = o.getAttribute("value");
-
-        Assert.assertEquals("xDsh5Y4yfwwnD@1a",o2);
-
-        Assert.assertTrue(m.isEnabled());
-        Assert.assertTrue(s.isEnabled());
-        Assert.assertTrue(o.isEnabled());
+        Assert.assertEquals(true,f1);
+        Assert.assertEquals(true,f2);
+        Assert.assertEquals(true,f3);
+        Assert.assertEquals("xDsh5Y4yfwwnD@1a",pas);
         w.quit();
     }
 
     @Test
     public void onesecond (){
-        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
-        w.get("http://oxogamestudio.com/passwd.current4.htm");
-        WebElement m = w.findElement(By.xpath("//input [@name ='master'][@type = 'password']"));
-        String m1 = m.getText();
-        WebElement s = w.findElement(By.xpath("//input [@name ='site'][@autocorrect = 'off']"));
-        String s1 = s.getText();
-        WebElement o = w.findElement(By.xpath("//input [@name ='password']"));
-        WebElement v = w.findElement(By.xpath("//input [@type='submit'][@value='Generate']"));
-        s.sendKeys("irena.com");
-        v.click();
+        WebDriver w = PassGen_first.urlSite();
+        PassGen_first.InputSite_2(w,"facebook.com");
+        PassGen_first.click(w);
 
-        while (o.getAttribute("value").equals(""));
+        Boolean f1 = PassGen_first.mast_field_enab1(w);
+        Boolean f2 = PassGen_first.mast_field_enab2(w);
+        Boolean f3 =PassGen_first.mast_field_enab3(w);
+        String pas = PassGen_first.GetPassword(w);
 
-        String o2 = o.getAttribute("value");
 
-        Assert.assertEquals("nT376YWRIsX/D@1a",o2);
-        Assert.assertTrue(s.isEnabled());
-        Assert.assertTrue(o.isEnabled());
+        Assert.assertEquals(true,f1);
+        Assert.assertEquals(true,f2);
+        Assert.assertEquals(true,f3);
+        Assert.assertEquals("lFAosQQIiXvAR@1a",pas);
+
         w.quit();
     }
     @Test
     public void doubleclick ()
     {
-        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
-        w.get("http://oxogamestudio.com/passwd.current4.htm");
-        WebElement m = w.findElement(By.xpath("//input [@name ='master'][@type = 'password']"));
-        String m1 = m.getText();
-        WebElement s = w.findElement(By.xpath("//input [@name ='site'][@autocorrect = 'off']"));
-        String s1 = s.getText();
-        WebElement o = w.findElement(By.xpath("//input [@name ='password']"));
-        WebElement v = w.findElement(By.xpath("//input [@type='submit'][@value='Generate']"));
-        s.sendKeys("irena.com");
-        v.click();
-        v.click();
+        WebDriver w = PassGen_first.urlSite();
+        PassGen_first.InputSite_2(w,"facebook.com");
+        PassGen_first.click(w);
+        PassGen_first.click(w);
 
-        while (o.getAttribute("value").equals(""));
+        Boolean f1 = PassGen_first.mast_field_enab1(w);
+        Boolean f2 = PassGen_first.mast_field_enab2(w);
+        Boolean f3 =PassGen_first.mast_field_enab3(w);
+        String pas = PassGen_first.GetPassword(w);
 
-        String o2 = o.getAttribute("value");
 
-        Assert.assertEquals("nT376YWRIsX/D@1a",o2);
-      //  Assert.assertTrue(s.isEnabled());
-     //   Assert.assertTrue(o.isEnabled());
+        Assert.assertEquals(true,f1);
+        Assert.assertEquals(true,f2);
+        Assert.assertEquals(true,f3);
+        Assert.assertEquals("lFAosQQIiXvAR@1a",pas);
+
         w.quit();
     }
 
     @Test
     public void cleaningatributs (){
-        System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
-        w.get("http://oxogamestudio.com/passwd.current4.htm");
-        WebElement m = w.findElement(By.xpath("//input [@name ='master'][@type = 'password']"));
-        String m1 = m.getText();
-        WebElement s = w.findElement(By.xpath("//input [@name ='site'][@autocorrect = 'off']"));
-        String s1 = s.getText();
-        WebElement o = w.findElement(By.xpath("//input [@name ='password']"));
-        WebElement v = w.findElement(By.xpath("//input [@type='submit'][@value='Generate']"));
-        m.sendKeys("123");
-        s.sendKeys("facebook.com");
-        v.click();
-m1 = m.getAttribute("value");
-        s1 = s.getAttribute("value");
+        WebDriver w = PassGen_first.urlSite();
+        PassGen_first.InputData_1(w, "123");
+        PassGen_first.InputSite_2(w,"facebook.com");
+        PassGen_first.click(w);
 
-        while (o.getAttribute("value").equals(""));
 
-        String o2 = o.getAttribute("value");
+        Boolean f1 = PassGen_first.mast_field_enab1(w);
+        Boolean f2 = PassGen_first.mast_field_enab2(w);
+        Boolean f3 =PassGen_first.mast_field_enab3(w);
+        String pas = PassGen_first.GetPassword(w);
+      String ff1= PassGen_first.get_atrib1(w);
+       String ff2 = PassGen_first.get_atrib2(w);
 
-        Assert.assertEquals("Hq377QTRpTWZJ@1a",o2);
-        Assert.assertEquals("123",m1);
-        Assert.assertEquals("facebook.com", s1);
-        Assert.assertTrue(s.isEnabled());
-        Assert.assertTrue(o.isEnabled());
+
+        Assert.assertEquals("123",ff1);
+        Assert.assertEquals("facebook.com", ff2);
+        Assert.assertEquals("Hq377QTRpTWZJ@1a",pas);
+        Assert.assertEquals(true,f1);
+        Assert.assertEquals(true,f2);
+        Assert.assertEquals(true,f3);
         w.quit();
 
     }
