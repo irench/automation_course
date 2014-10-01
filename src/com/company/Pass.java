@@ -1,6 +1,8 @@
 package com.company;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -11,12 +13,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(JUnit4.class)
 public class Pass {
-
-
-
+    public WebDriver w;
+    @Before
+public void BeforeOpenSite (){
+         w = PassGen_first.urlSite();
+    }
+@After
+public  void CloseBr (){
+    w.quit();
+}
     @Test
     public void All (){
-       WebDriver w = PassGen_first.urlSite();
+
 
 
         PassGen_first.InputData_1(w, "123");
@@ -32,12 +40,12 @@ public class Pass {
         Assert.assertEquals("Site name",a1);
         Assert.assertEquals("Your master password",b1);
         Assert.assertEquals("Generated password",c1);
-        w.quit();
+
 
     }
 @Test
     public void Not_Diseable (){
-    WebDriver w = PassGen_first.urlSite();
+
     PassGen_first.InputData_1(w,"123");
     PassGen_first.InputSite_2(w,"facebook.com");
     PassGen_first.click(w);
@@ -53,12 +61,12 @@ public class Pass {
     Assert.assertEquals(true,f3);
     Assert.assertEquals("Hq377QTRpTWZJ@1a",pas);
 
-    w.quit();
+
 
     }
     @Test
     public void OneFirst(){
-        WebDriver w = PassGen_first.urlSite();
+
         PassGen_first.InputData_1(w,"irena");
         PassGen_first.click(w);
 
@@ -72,12 +80,12 @@ public class Pass {
         Assert.assertEquals(true,f2);
         Assert.assertEquals(true,f3);
         Assert.assertEquals("xDsh5Y4yfwwnD@1a",pas);
-        w.quit();
+
     }
 
     @Test
     public void onesecond (){
-        WebDriver w = PassGen_first.urlSite();
+
         PassGen_first.InputSite_2(w,"facebook.com");
         PassGen_first.click(w);
 
@@ -92,12 +100,12 @@ public class Pass {
         Assert.assertEquals(true,f3);
         Assert.assertEquals("lFAosQQIiXvAR@1a",pas);
 
-        w.quit();
+
     }
     @Test
     public void doubleclick ()
     {
-        WebDriver w = PassGen_first.urlSite();
+
         PassGen_first.InputSite_2(w,"facebook.com");
         PassGen_first.click(w);
         PassGen_first.click(w);
@@ -113,7 +121,7 @@ public class Pass {
         Assert.assertEquals(true,f3);
         Assert.assertEquals("lFAosQQIiXvAR@1a",pas);
 
-        w.quit();
+
     }
 
     @Test
@@ -138,7 +146,7 @@ public class Pass {
         Assert.assertEquals(true,f1);
         Assert.assertEquals(true,f2);
         Assert.assertEquals(true,f3);
-        w.quit();
+
 
     }
 
