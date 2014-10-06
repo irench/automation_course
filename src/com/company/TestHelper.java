@@ -5,11 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TestHelper {
     public static WebDriver init(){
         System.setProperty("webdriver.chrome.driver", "D:\\Tools\\chromedriver.exe");
-        WebDriver w = new ChromeDriver();
+        ChromeOptions l = new ChromeOptions();
+        l.addArguments("--lang=en-us");
+        WebDriver w = new ChromeDriver(l);
         return w;
 }
 public  static  WebDriver initget (String h){
